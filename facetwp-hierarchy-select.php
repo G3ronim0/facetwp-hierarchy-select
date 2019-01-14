@@ -20,10 +20,10 @@ define( 'FWPHS_BASENAME', plugin_basename( __FILE__ ) );
 /**
  * Internationalization
  */
- function facetwp_hierarchy_select() {
+ function facetwp_hierarchy_select_i18n() {
    load_plugin_textdomain( 'facetwp-hierarchy-select', false, basename( dirname( __FILE__ ) ) . '/languages' );
  }
- add_action( 'init', 'facetwp_hierarchy_select' );
+ add_action( 'init', 'facetwp_hierarchy_select_i18n' );
 
 /**
  * FacetWP registration hook
