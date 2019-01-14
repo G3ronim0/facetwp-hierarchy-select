@@ -1,0 +1,75 @@
+# Copyright (C) 2019 FacetWP, LLC
+# This file is distributed under the same license as the FacetWP - Hierarchy Select plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: FacetWP - Hierarchy Select 0.4.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/facetwp-hierarchy-select\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-01-11T20:53:41+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.1.0-alpha-93d1e17\n"
+"X-Domain: facetwp-hierarchy-select\n"
+
+#. Plugin Name of the plugin
+msgid "FacetWP - Hierarchy Select"
+msgstr ""
+
+#. Description of the plugin
+msgid "Hierarchy select facet type"
+msgstr ""
+
+#. Author of the plugin
+msgid "FacetWP, LLC"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://facetwp.com/"
+msgstr ""
+
+#: class-hierarchy-select.php:7
+msgid "Hierarchy Select"
+msgstr ""
+
+#: class-hierarchy-select.php:9
+msgid "Depth"
+msgstr ""
+
+#: class-hierarchy-select.php:10
+msgid "label"
+msgstr ""
+
+#: class-hierarchy-select.php:94
+msgid "Any"
+msgstr ""
+
+#: class-hierarchy-select.php:175
+msgid "Add label"
+msgstr ""
+
+#: class-hierarchy-select.php:202
+msgid "Sort by"
+msgstr ""
+
+#: class-hierarchy-select.php:205
+msgid "Highest Count"
+msgstr ""
+
+#: class-hierarchy-select.php:206
+msgid "Display Value"
+msgstr ""
+
+#: class-hierarchy-select.php:207
+msgid "Raw Value"
+msgstr ""
+
+#: class-hierarchy-select.php:215
+msgid "Depth labels"
+msgstr ""
+
+#: class-hierarchy-select.php:219
+msgid "Enter a label for each depth level"
+msgstr ""

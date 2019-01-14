@@ -4,7 +4,11 @@ class FacetWP_Facet_Hierarchy_Select_Addon extends FacetWP_Facet
 {
 
     function __construct() {
-        $this->label = __( 'Hierarchy Select', 'fwp' );
+        $this->label = __( 'Hierarchy Select', 'facetwp-hierarchy-select' );
+        $this->i18n  = array(
+          'Depth' => __( 'Depth', 'facetwp-hierarchy-select' ),
+          'label' => __( 'label', 'facetwp-hierarchy-select' )
+        );
     }
 
 
@@ -87,7 +91,7 @@ class FacetWP_Facet_Hierarchy_Select_Addon extends FacetWP_Facet
 
                 $disabled = ( $level <= $num_active_levels ) ? '' : ' disabled';
                 $class = empty( $disabled ) ? '' : ' is-disabled';
-                $label = empty( $levels[ $level ] ) ? __( 'Any', 'fwp' ) : $levels[ $level ];
+                $label = empty( $levels[ $level ] ) ? __( 'Any', 'facetwp-hierarchy-select' ) : $levels[ $level ];
                 $label = facetwp_i18n( $label );
                 $output .= '<select class="facetwp-hierarchy_select' . $class . '" data-level="' . $level . '"' . $disabled . '>';
                 $output .= '<option value="">' . esc_attr( $label ) . '</option>';
@@ -101,7 +105,7 @@ class FacetWP_Facet_Hierarchy_Select_Addon extends FacetWP_Facet
                 $show_counts = apply_filters( 'facetwp_facet_dropdown_show_counts', true, array( 'facet' => $facet ) );
 
                 if ( $show_counts ) {
-                    $display_value .= ' (' . $result['counter'] . ')';
+                    $display_value .= ' (' . number_format_i18n( $result['counter'] ) . ')';
                 }
 
                 $output .= '<option value="' . esc_attr( $result['facet_value'] ) . '"' . $selected . '>' . $display_value . '</option>';
@@ -150,17 +154,24 @@ class FacetWP_Facet_Hierarchy_Select_Addon extends FacetWP_Facet
 ?>
 <script>
 
+window.FWPHT = {
+    __: function(str) {
+        return ('undefined' !== typeof FWPHT.i18n[str]) ? FWPHT.i18n[str] : str;
+    },
+    i18n: <?php echo json_encode( $this->i18n ); ?>,
+};
+
 Vue.component('levels', {
     props: ['facet'],
     template: `
     <div>
         <div v-for="(label, index) in facet.levels">
             <div style="padding-bottom:10px">
-                <input type="text" v-model="facet.levels[index]" :placeholder="getPlaceholder(index)" />
+                <input type="text" v-model="facet.levels[index]"  v-bind:placeholder="getPlaceholder(index)" />
                 <button @click="removeLabel(index)">x</button>
             </div>
         </div>
-        <button @click="addLabel()">Add label</button>
+        <button @click="addLabel()"><?php _e( 'Add label', 'facetwp-hierarchy-select' ); ?></button>
     </div>
     `,
     methods: {
@@ -171,7 +182,7 @@ Vue.component('levels', {
             Vue.delete(this.facet.levels, index);
         },
         getPlaceholder: function(index) {
-            return 'Depth ' + index + ' label';
+            return FWPHT.__('Depth') + ' ' + index + ' ' + FWPHT.__('label');
         }
     }
 });
@@ -187,12 +198,12 @@ Vue.component('levels', {
     function settings_html() {
     ?>
         <div class="facetwp-row">
-            <div class="facetwp-col"><?php _e( 'Sort by', 'fwp' ); ?>:</div>
+            <div class="facetwp-col"><?php _e( 'Sort by', 'facetwp-hierarchy-select' ); ?>:</div>
             <div class="facetwp-col">
                 <select class="facet-orderby">
-                    <option value="count"><?php _e( 'Highest Count', 'fwp' ); ?></option>
-                    <option value="display_value"><?php _e( 'Display Value', 'fwp' ); ?></option>
-                    <option value="raw_value"><?php _e( 'Raw Value', 'fwp' ); ?></option>
+                    <option value="count"><?php _e( 'Highest Count', 'facetwp-hierarchy-select' ); ?></option>
+                    <option value="display_value"><?php _e( 'Display Value', 'facetwp-hierarchy-select' ); ?></option>
+                    <option value="raw_value"><?php _e( 'Raw Value', 'facetwp-hierarchy-select' ); ?></option>
                 </select>
                 <input type="hidden" class="facet-hierarchical" value="yes" />
                 <input type="hidden" class="facet-levels" value="[]" />
@@ -200,11 +211,11 @@ Vue.component('levels', {
         </div>
         <div class="facetwp-row">
             <div class="facetwp-col">
-                <?php _e( "Depth labels", 'fwp' ); ?></span>:
+                <?php _e( 'Depth labels', 'facetwp-hierarchy-select' ); ?></span>:
                 <div class="facetwp-tooltip">
                     <span class="icon-question">?</span>
                     <div class="facetwp-tooltip-content">
-                        Enter a label for each depth level
+                        <?php _e( 'Enter a label for each depth level', 'facetwp-hierarchy-select' ); ?>
                     </div>
                 </div>
             </div>
