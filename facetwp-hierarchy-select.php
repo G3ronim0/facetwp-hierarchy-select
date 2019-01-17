@@ -12,11 +12,6 @@ Domain Path: /languages
 
 defined( 'ABSPATH' ) or exit;
 
-define( 'FWPHS_VERSION', '0.4.1' );
-define( 'FWPHS_DIR', dirname( __FILE__ ) );
-define( 'FWPHS_URL', plugins_url( '', __FILE__ ) );
-define( 'FWPHS_BASENAME', plugin_basename( __FILE__ ) );
-
 /**
  * Internationalization
  */
